@@ -1,0 +1,22 @@
+{% extends "tripobeatApp/base.html" %}
+{% load static %}
+
+<title>Other Profiles Page</title>
+<link rel="stylesheet" href="{% static "css/index.css"%}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static "js/form.js" %}"></script>
+
+{% block content-text-block %}
+    <div class = "user-profiles">
+    <div>
+    <h2> All User Profiles </h2>
+    </div>
+    <div class = "profile-list-div">
+    <ul class = "profile-list-ul">
+        {% for user_name in user_names %}
+            <a href="{% url "users:profile" user_name %}"><li class = "profile-list">{{ user_name }}</li></a>
+        {% endfor %}
+    </ul>
+    </div>
+    </div>
+{% endblock %}

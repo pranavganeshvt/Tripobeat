@@ -1,0 +1,13 @@
+{% extends "tripobeatApp/base.html" %}
+{% load static %}
+
+{% block content-text-block %}
+    <div class = "search-body">
+    <h1>No Results Found for {{ title }}</h1>
+    <p>We are working on adding new destinations everyday. Please check back later to see if your destination is available on our website. Thank you! </p>
+    <p>Let's go home and find something else.</p>
+        <div class = "home-button-div">
+    <a class = "home-button" href= {% url 'tripobeatApp:home_page' %}> Home </a>
+        </div>
+    </div>
+{% endblock %}

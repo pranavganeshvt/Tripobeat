@@ -1,0 +1,35 @@
+{% extends "tripobeatApp/base.html" %}
+{% load static %}
+{%  block page-title %} index {% endblock %}
+{% block content-text-block %}
+    <div class = "content">
+ <div class="content-text">
+            <div class="Tripobeat-help-div">
+                <h1 class="Tripobeat-help"> How Tripobeat Works? </h1>
+            </div>
+            <div class="site-description">
+                <div class="site-description-each">
+                    <i class="fa fa-globe" aria-hidden="true"></i>
+                    <p> Select your destination from a list of our many curated destinations</p>
+                </div>
+                <div class="site-description-each">
+                    <i class="fa fa-building"  aria-hidden="true"></i>
+                    <p> Select your accomodation choice from our list of 100+ accomodations</p>
+                </div>
+                <div class="site-description-each">
+                    <i class="fa fa-usd" aria-hidden="true"></i>
+                    <p> Select a budget that doesn't burn a hole in your pocket</p>
+                </div>
+                <div class="site-description-each">
+                    <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+                    <p> Finish your iternary and enjoy your trip. It's that simple! </p>
+                </div>
+            </div>
+            <div class="cta-div">
+                <a href="{% url "tripobeat:category_page" %}" class="cta-a">
+                    Start Exploring! Let's Go
+                </a>
+            </div>
+        </div>
+    </div>
+{%  endblock %}

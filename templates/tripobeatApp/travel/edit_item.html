@@ -1,0 +1,51 @@
+{% extends "tripobeatApp/base.html" %}
+{% load static %}
+{% load tz %}
+{%  block page-title %} edit-page {% endblock %}
+{% block content-text-block %}
+<form method="post" class = "edit-form" action="{% url 'tripobeat:edit_category' category.id %}">
+    {% csrf_token %}
+    <input type="hidden" name="itinerary_id" value="{{ category.id }}">
+    <div class = "edit-div-button-div">
+        <div class = "edit-div">
+                <div>
+                <label for="place_name">Place Name:</label>
+                <input type="text" name="title" value = "{{ category.title }}" class = "add-input" required>
+                </div>
+                <div>
+                <label for="description">Description:</label>
+                <input type="text" name="description" value = "{{ category.description}}" class = "add-input" required>
+                </div>
+                <div>
+                <label for="days_price">Days and Price:</label>
+                <input type="text" name="cost" value = "{{ category.cost }}" class = "add-input" required>
+                </div>
+                    <div>
+                <label for="departure_details">Departure Details:</label>
+                <input type="text" name="departure_details" value = "{{ category.departure_details }}" class = "add-input">
+                </div>
+                    <div>
+                <label for="return_details">Return Details:</label>
+                <input type="text" name="return_details" value = "{{ category.return_details }}" class = "add-input">
+                </div>
+                    <div>
+                <label for="inclusion">Inclusions:</label>
+                <input type="text" name="inclusion" value = "{{ category.inclusions }}" class = "add-input">
+                </div>
+                    <div>
+                <label for="exclusion">Exclusions:</label>
+                <input type="text" name="exclusion" value = "{{ category.exclusions }}" class = "add-input">
+                </div>
+                    <div>
+                <label for="access">Accesibility Information:</label>
+                <input type="text" name="access" value = "{{ category.access }}" class = "add-input">
+                </div>
+                    <div>
+                <label for="cancel">Cancellation Policy:</label>
+                <input type="text" name="cancel" value = "{{ category.cancel }}" class = "add-input">
+                </div>
+                 </div>
+        <div class = "submit-div"><button type="submit" class = "submit-button">Edit & Save</button></div>
+    </div>
+</form>
+{% endblock %}

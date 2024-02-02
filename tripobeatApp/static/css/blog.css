@@ -1,0 +1,101 @@
+a {
+    text-decoration: underline;
+    color: black;
+}
+
+.blog-content {
+    display: flex;
+    padding: 0 2vw 5vh 2vw;
+    gap: 5rem;
+    margin-top: 2rem;
+}
+
+.blog-enter-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons-blog {
+    display: flex;
+    gap: 2rem;
+    justify-content: end;
+    padding-top: 2rem;
+}
+
+.button-blog {
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    background-color: var(--footer-background-color);
+    color: white;
+    cursor: pointer;
+    padding: 1rem 3rem 1rem 3rem;
+    text-decoration: none;
+    border: 0;
+}
+
+.other-blogs {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 3rem;
+}
+
+.background {
+    background-color: #72491e;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(5px);
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.background-cascades {
+    background-image: url("../images/Cascade_Falls.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(5px);
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.background-smokies {
+    background-image: url("../images/Great_Smoky_Mountains.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.background-shen {
+    background-image: url("../images/Shenandoah_National_Park.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.background-nrg {
+    background-image: url("../images/New_River_Gorge_2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.text-background {
+    background-color: rgba(255, 255, 255, 0.5);
+    font-family: 'helvetica';
+}
+
+.other-btn
+{
+    display: flex;
+  align-items: center;
+  border-radius: 15px;
+  background-color: var(--footer-background-color);
+  color: white;
+  cursor: pointer;
+  padding: 1rem 3rem 1rem 3rem;
+  text-decoration: none;
+  border: 0;
+}

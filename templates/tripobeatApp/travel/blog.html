@@ -1,0 +1,39 @@
+{% extends "tripobeatApp/base.html" %}
+{% load static %}
+{%  block page-title %} index {% endblock %}
+{% block content-text-block %}
+     <div class="blog-content">
+        <!-- Enter new Blog Post-->
+
+        <div class="blog-enter-content">
+        {% if not request.session.username %}
+            <h1> Login to Post about your Tripobeat Experience</h1>
+        {% else %}
+            <h1> New Blog Post about Tripobeat Experience </h1>
+        {% endif %}
+            <div><textarea name="Tripobeatreview" rows="20" cols="100">
+            </textarea>
+            </div>
+            <div class="buttons-blog">
+            {% if request.session.username %}
+                <button class="button-blog"> Cancel </button>
+                <button class="button-blog"> Add Images </button>
+                <button class="button-blog"> Post your Experience </button>
+            {% else %}
+                <button class="button-blog" style = "background-color: gray"> Cancel </button>
+                <button class="button-blog" style = "background-color: gray"> Add Images </button>
+                <button class="button-blog" style = "background-color: gray"> Post your Experience </button>
+            {% endif %}
+            </div>
+        </div>
+
+        <div>
+            <!-- Other Blog Posts on Website -->
+            <h2>Other Blog Posts </h2>
+            <button id = "load-other-blogs" class = "other-btn"> Open Other Blog Posts </button>
+            <div class="other-blogs-container">
+
+            </div>
+        </div>
+    </div>
+{%  endblock %}

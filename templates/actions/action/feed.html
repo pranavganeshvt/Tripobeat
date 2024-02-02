@@ -1,0 +1,24 @@
+{% load tz %}
+{% load static %}
+<link rel="stylesheet" href="{% static "css/index.css" %}">
+<h3>Recent Activity</h3>
+<ul style="list-style-type: disc">
+{% for action in actions %}
+    <li style="color: ghostwhite; margin-bottom: 3px;">
+        {% if not action.role_changed %}
+            <a class = "feed" href="{% url 'users:profile' action.user.username %}" style="color: ghostwhite"> User {{ action.user.username }} </a>
+            {{ action.verb }}
+        {% endif %}
+        {% if action.target %}
+            <a class = "feed" href="{{ action.target.get_absolute_url }}" style="color: ghostwhite">{{ action.target}}</a>
+        {% endif %}
+        {% if action.role_changed %}
+            <a class = "feed" href="{% url 'users:profile' action.user.username %}" style="color: ghostwhite"> User {{ action.user.username }} </a>
+        {{ action.verb }}
+        {% endif %}
+        ({{ action.created|timezone:"US/Eastern"|date:"F j, Y P" }})
+    </li>
+    {% empty %}
+    <li>No activity yet</li>
+{% endfor %}
+</ul>

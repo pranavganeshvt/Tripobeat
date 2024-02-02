@@ -1,0 +1,194 @@
+{% extends "tripobeatApp/base.html" %}
+{% load static %}
+{% load tz %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{%  block page-title %} index {% endblock %}
+{% block content-text-block %}
+        <div class="item-content">
+        <div class = "title-edit">
+        <h1 class="item-name"> {{ items.title }} </h1>
+            {% if request.session.access == 'admin' %}
+            <a class = "edit-btn" href = "{% url 'tripobeat:edit_category' items.id %}"> Edit </a>
+            {% endif %}
+        </div>
+
+        <div class="nav-bar-item">
+            <ul class="nav-bar-list-item">
+                <li><a href="#about" class="nav-item-button">Overview</a></li>
+                <li><a href="#reviews" class="nav-item-button">Reviews </a></li>
+            </ul>
+        </div>
+        {% if request.session.access == 'admin' %}
+        <div>
+            Posted by {{ items.author }} on {{ items.date_posted|timezone:"US/Eastern"|date:"F j, Y P" }}
+        </div>
+        {% endif %}
+        <!-- Horizontal Scrolling Images for the Location-->
+<div class="scrolling-images">
+    <div class="image-container">
+        {% if items.image_url %}
+            <img src="{{ items.image_url.url }}" alt="{{ items.title }}" style="max-width: 100%; max-height: 100%; height: auto; width: 100%;" />
+        {% else %}
+             <img src="{% static 'NRG_3.jpg' %}" alt="Default Image" style="max-width: 100%; max-height: 100%; height: auto; width: 100%;" />
+        {% endif %}
+    </div>
+</div>
+        <!--- Location Description -->
+        <div class="item-flex">
+            <div class="item-description">
+                <a class="list-utext" id="about">About</a>
+                <p> {{ items.description }}</p>
+                <hr class="solid">
+                <div class="dropdown-container">
+                    <div class="dropdown">
+                        <button class="dropdown-toggle"> Departure and return <i class="fa fa-caret-down"
+                                aria-hidden="true"></i> </button>
+                        <ul class="lists">
+
+                            <li> <a class="list-utext" class="list-toggle"> Departure details </a> </li>
+
+                            <li> <a> {{ items.departure_details}}
+                                </a> </li>
+
+                            <li> <a class="list-utext"> Return details</a> </li>
+
+                            <li> <a>
+                                {{items.return_details}}
+                                </a> </li>
+                        </ul>
+                    </div>
+                    <!-- Dropdown to hide multiple windows like Inclusions, Exclusions etc-->
+                    <hr class="solid">
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" id="inclusions"> Inclusions <i class="fa fa-caret-down"
+                                aria-hidden="true"></i> </button>
+                        <ul class="lists">
+                            <li> {{ items.inclusions }}</li>
+                        </ul>
+
+
+                    </div>
+                    <hr class="solid">
+                    <div class="dropdown">
+                        <button class="dropdown-toggle"> Exclusions <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        </button>
+
+                        <ul class="lists">
+                            <li> {{ items.exclusions }}</li>
+                        </ul>
+
+                    </div>
+                    <hr class="solid">
+                    <div class="dropdown">
+                        <button class="dropdown-toggle"> Accesibility <i class="fa fa-caret-down"
+                                aria-hidden="true"></i>
+                        </button>
+                        <ul class="lists">
+                            <li> {{ items.access }}</li>
+                        </ul>
+
+                    </div>
+                    <hr class="solid">
+                    <div class="dropdown">
+                        <button class="dropdown-toggle"> Cancellation Policy <i class="fa fa-caret-down"
+                                aria-hidden="true"></i> </button>
+                        <div class="lists">{{ items.cancel }}</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Book the package, reserve spot. -->
+            <div class="cart-addition">
+                <a class="list-utext"> Reserve your Spot </a>
+                <div class="cal-users">
+                    <a> Enter your preferred date of travel </a>
+                    <input type="text" id="date-input" placeholder="MM/DD/YYYY" class="search-bar date-box">
+                    <label for="Users"><i class="fa fa-user" aria-hidden="true"> </i>No of people</label>
+                    <select id="Users" class="users-box">
+                        <option value="1"> 1 </option>
+                        <option value="2"> 2 </option>
+                        <option value="3"> 3 </option>
+                        <option value="4"> 4 </option>
+                        <option value="5"> 5 </option>
+                        <option value="6"> 6 </option>
+                        <option value="7"> 7 </option>
+                        <option value="8"> 8 </option>
+                        <option value="9"> 9 </option>
+                        <option value="10"> 10 </option>
+                    </select>
+                </div>
+                <div class="product">
+                    <div><button class="cta-atc" id="addtoCart"> Add to cart </button></div>
+                    <div id="placeholderaddSuccess"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Reviews Section -->
+    <div class="reviews-total">
+        <hr class="solid">
+        <a class="reviews-header"> Reviews</a>
+        <div>
+            <div class="reviews">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <a href="#more-reviews" class="more-reviews"> 4.0/5.0 (29 Reviews) </a>
+                {% if request.session.username %}
+                <button class="nav-item-button leave-a-review" id="leave-review-button"> Leave a Review </button>
+                    {% endif %}
+            </div>
+            <form id="review-form" style="display: none;">
+                {% csrf_token %}
+            <input type="text" name="title" placeholder="Review Title" />
+            <textarea name="description" placeholder="Your Review" rows="4"></textarea>
+                <input type="hidden" name="itinerary-id" value= {{ items.id }} />
+            <input type="hidden" name="review_id" value="{{ review.id }}">
+            <button type="submit">Submit Review</button>
+
+            </form>
+            <hr class='dotted'>
+            <div class="ind-review" id="reviews">
+            {% if reviews %}
+                {% for review in reviews %}
+              <div class = "edit-delete-buttons-flex">
+                <div class = "ind-review-new">
+                <a href = "{% url 'users:profile' review.name.username %}" class="reviewer-name"> {{ review.name }} </a>
+                <div class="ind-review-description">
+                    <div class="ind-review-div">
+                        <p class="ind-review-header"> {{ review.title }}</p>
+                        <p>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <!-- Used Inline styling here, since it is a single property for half star -->
+                            <i class="fa fa-star-half-o" style="font-size: 15px;" aria-hidden="true"></i>
+                        </p>
+                    </div>
+                    <p> {{ review.description }}</p>
+                    <p>{{ review.date_posted|timezone:"US/Eastern"|date:"F j, Y P" }}</p>
+                    <hr class = "solid">
+                    </div>
+                </div>
+
+                {% if request.session.access == 'admin' or request.session.username == review.name.username %}
+                <div class="review-actions">
+                <div><a href="{% url 'tripobeatApp:edit_review' itinerary_id=items.id review_id=review.id %}" class = "edit-review-btn">Edit</a></div>
+                <div><a href = "#" class="delete-review" data-review-id="{{ review.id }}" data-itinerary-id="{{ items.id }}">Delete</a></div>
+                </div>
+                {% endif %}
+              </div>
+                {% endfor %}
+            {% else %}
+            <div class = "no-comments">
+                No reviews for this product yet!
+            </div>
+            {% endif %}
+            </div>
+
+
+        </div>
+    </div>
+{%  endblock %}
+

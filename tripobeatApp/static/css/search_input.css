@@ -1,0 +1,25 @@
+.search-body{
+    margin: 1rem;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home-button-div
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home-button {
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--footer-background-color);
+    color: white;
+    cursor: pointer;
+    padding: 1rem;
+}

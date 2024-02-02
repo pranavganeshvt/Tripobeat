@@ -1,0 +1,60 @@
+{% extends "tripobeatApp/base.html" %}
+{% load static %}
+{%  block page-title %} index {% endblock %}
+{% block content-text-block %}
+    {% if request.session.access == 'admin' %}
+        <div class = "add-form-flex">
+        <div id="add-form" class="add-form">
+            <form method="post" action="{% url 'tripobeatApp:add_category' %}" enctype="multipart/form-data" class = "add-form-outer">
+                {% csrf_token %}
+                <div class = "add-div">
+                <div>
+                <label for="place_name">Place Name:</label>
+                <input type="text" name="place_name" class = "add-input" required>
+                </div>
+                <div>
+                <label for="description">Description:</label>
+                <input type="text" name="description" class = "add-input" required>
+                </div>
+                <div>
+                <label for="days_price">Days and Price:</label>
+                <input type="text" name="days_price" class = "add-input" required>
+                </div>
+                <div>
+                <label for="image_url">Image:</label>
+                <input type="file" name="image_url" class = "add-input">
+                </div>
+                    <div>
+                <label for="departure_details">Departure Details:</label>
+                <input type="text" name="departure_details" class = "add-input">
+                </div>
+                    <div>
+                <label for="return_details">Return Details:</label>
+                <input type="text" name="return_details" class = "add-input">
+                </div>
+                    <div>
+                <label for="inclusion">Inclusions:</label>
+                <input type="text" name="inclusion" class = "add-input">
+                </div>
+                    <div>
+                <label for="exclusion">Exclusions:</label>
+                <input type="text" name="exclusion" class = "add-input">
+                </div>
+                    <div>
+                <label for="access">Accesibility Information:</label>
+                <input type="text" name="access" class = "add-input">
+                </div>
+                    <div>
+                <label for="cancel">Cancellation Policy:</label>
+                <input type="text" name="cancel" class = "add-input">
+                </div>
+                 </div>
+                <div class = "submit-add-button-div">
+                <button type="submit" class = "submit-add-button">Submit</button>
+                </div>
+            </form>
+        </div>
+        </div>
+
+    {% endif %}
+{%  endblock %}

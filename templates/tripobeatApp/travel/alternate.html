@@ -1,0 +1,15 @@
+{% extends "tripobeatApp/base.html" %}
+{% load static %}
+{%  block page-title %} index {% endblock %}
+{% block content-text-block %}
+    <div class = "content">
+<div class="content-text-alternate">
+            <div class = "recent-activity-home">
+            {% include "actions/action/feed.html" %}
+            </div>
+            <div class="cta-div-alternate">
+                <a href="{% url "tripobeat:category_page" %}" class="cta-a"> Start Exploring! Let's Go </a>
+            </div>
+        </div>
+    </div>
+{%  endblock %}

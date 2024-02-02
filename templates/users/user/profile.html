@@ -1,0 +1,49 @@
+{% extends "tripobeatApp/base.html" %}
+{% load static %}
+
+<title>Profile Page</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+{% block content-text-block %}
+    <div class = "single-profile-div">
+    <div>
+    <h2> Profile Page for {{ user.username }} </h2>
+    </div>
+    <div class = "profile-main-div">
+    {% if request.session.access == 'admin' or request.session.username == user.username%}
+    <div>
+<form id="profile-form" class="profile-form" action="{% url 'users:profile' username=user.username %}" method="post">
+    {% csrf_token %}
+    <div>Username: {{ user.username }}</div>
+    {% for field in form %}
+        {% if field.name != 'role' %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                {{ field }}
+                {{ field.errors }}
+            </div>
+        {% endif %}
+    {% endfor %}
+    {% if request.session.access == "admin" %}
+        <label for="{{ form.role.id_for_label }}">Role</label>
+        {{ form.role }}
+        {{ form.role.errors }}
+    {% endif %}
+    <div class = "profile-submit"><button class = "profile-submit-button" type="submit" id="save-btn">Save</button></div>
+</form>
+    </div>
+    {% else %}
+        <div class = "non-editable-profile">
+        <div>Username: {{ user.username }}</div>
+        <div>First Name: {{ user.first_name }}</div>
+        <div>Last Name: {{ user.last_name }}</div>
+        <div>Email: {{ user.email }}</div>
+        </div>
+    {% endif %}
+    <div class ="recent-activity">
+{% include "actions/action/feed.html" %}
+    </div>
+    </div>
+
+    </div>
+{% endblock %}

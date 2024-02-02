@@ -1,0 +1,68 @@
+{% extends "tripobeatApp/base.html" %}
+{% load static %}
+{% block page-title %} index {% endblock %}
+{% block content-text-block %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src= "{% static "js/category.js" %}" ></script>
+    <div class="category-content">
+        <div class="city-description">
+            <h1>Things to do near Blacksburg</h1>
+        </div>
+        <div class="city-description-wrapper">
+            <h2>Itineraries</h2>
+            {% if request.session.access == 'admin' %}
+            <a href="{% url 'tripobeatApp:add_item_page'%}" class="add-item">Add new item</a>
+            {% endif %}
+        <button id="sort-by-title" class = "sort-item" onclick="sortCategoriesByTitle()">Sort by Name</button>
+        </div>
+        {% if categories %}
+        <div class="items-grid">
+            {% for category in categories %}
+                <div class="categories" data-title="{{ category.title }}">
+                    <div class="heart-wrapper">
+                        {% if category.image_url %}
+                             <img class="place-image" alt="place-image" src="{{ category.image_url.url }}">
+                        {% else %}
+                            <img class="placeholder-image" alt="placeholder-image" src="{% static 'NRG_3.jpeg' %}">
+                        {% endif %}
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        {% if request.session.access == 'admin' %}
+                        <div id="edit-form-{{ itinerary.id }}" class = "edit-form-div-outer">
+                            <a class = "edit-btn" href = "{% url 'tripobeat:edit_category' category.id %}"> Edit Itinerary</a>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="place-description">
+
+                        <div class = "delete-div">
+                        <a class="place-name">{{ category.title }}</a>
+                            {% if request.session.access == 'admin' %}
+                        <form method="post" class= "delete-form" action="{% url 'tripobeat:delete_category' category.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="itinerary_id" value="{{ category.id }}">
+                         <button type="submit" class ="delete-button" onclick="confirmDelete('{{ category.id }}')">Delete</button>
+                        </form>
+                            {% endif %}
+                        </div>
+
+                        <p>{{ category.description }}</p>
+                        <a>{{ category.cost }}</a>
+                        <div class="cta-button-category-div">
+                            <a href="{% url 'tripobeatApp:item_page' category.id %}" class="cta-button-category">Let's Go!</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+            {% else %}
+            <div class = "friendly-ext-div">
+            <div class="friendly-message">
+            No itineraries at the moment. Add new itineraries to display!
+            </div>
+            </div>
+        {% endif %}
+    </div>
+ {% endblock %}
+
+

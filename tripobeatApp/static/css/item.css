@@ -1,0 +1,289 @@
+.item-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2vw 0 2vw;
+  margin-top: 2rem;
+}
+
+a{
+  text-decoration: none;
+}
+
+.nav-bar-item {
+  position: sticky;
+  display: flex;
+  background-color: white;
+  margin-top: 1rem;
+}
+
+.item-name {
+  font-size: 35px;
+}
+
+.item-flex {
+  display: flex;
+  float: left;
+  padding-top: 2px;
+  gap: 10rem;
+}
+
+.item-description {
+  width: 50%;
+  padding-bottom: 2rem;
+}
+
+div.scrolling-images {
+  background-color: #333;
+  overflow: scroll;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+div.scrolling-images img {
+  padding: 10px;
+}
+
+.images-nrg {
+  height: 93vh;
+  width: 93vw;
+}
+
+.cart-addition {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  width: 25vw;
+  justify-content: center;
+  align-items: start;
+  padding-left: 2rem;
+  margin-top: 5rem;
+  box-shadow: 5px 5px 5px 5px rgba(0.1, 0.1, 0.1, 0.1);
+}
+
+.reviews {
+  display: flex;
+}
+
+.date-box {
+  display: flex;
+  justify-content: center;
+  width: 10vw;
+  margin-left: 0px;
+  background-color: ghostwhite;
+  border-radius: 15px;
+  border: none;
+}
+
+.users-box {
+  width: 2.5vw;
+}
+
+.lists {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  list-style: circle;
+  padding: 0.5rem 0 0.5rem 0;
+  gap: 0.5rem;
+}
+
+.dropdown-toggle {
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  /* outline: none; */
+}
+
+.dropdown-toggle:hover {
+  text-decoration: underline;
+}
+
+/* 
+.dropdown:hover .lists {
+  display: block;
+} */
+
+
+.list-utext {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.cta-atc {
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  background-color: var(--footer-background-color);
+  color: white;
+  cursor: pointer;
+  padding: 1rem 3rem 1rem 3rem;
+  text-decoration: none;
+  border: 0;
+}
+
+.cal-users {
+  padding: 1rem 0 1rem 0;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+hr.solid {
+  border-top: 3px solid #bbb;
+}
+
+.nav-bar-list-item {
+  display: flex;
+  padding-bottom: 1rem;
+  gap: 1rem;
+}
+
+.nav-bar-list-item li:visited {
+
+  color: black;
+  text-decoration: underline;
+}
+
+.nav-item-button {
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: ghostwhite;
+  padding: 0.5rem;
+  color: black;
+}
+
+.fa-caret-down {
+  font-size: small;
+}
+
+.fa-user {
+  font-size: medium;
+}
+
+.fa-star {
+  font-size: 15px;
+}
+
+.reviews-total {
+  padding-bottom: 4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.reviews {
+  display: flex;
+  margin-top: 0.3rem;
+}
+
+.fa-star {
+  padding: 1px;
+}
+
+.fa-star-half-o {
+  padding: 1px;
+}
+
+.leave-a-review {
+  margin-left: 65rem;
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+}
+
+.leave-a-review:hover {
+  background-color: var(--footer-background-color);
+  color: white;
+}
+
+.more-reviews {
+  text-decoration: none;
+  color: black;
+  margin-left: 0.2rem;
+}
+
+.more-reviews:hover {
+  text-decoration: underline;
+}
+
+.ind-review p {
+  margin: 5px;
+}
+
+.ind-review-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.ind-review-header {
+  font-style: italic;
+  font-weight: lighter;
+}
+
+.reviews-header {
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 2px;
+}
+
+.reviewer-name {
+  font-weight: bolder;
+}
+
+.ind-review-div {
+  display: flex;
+}
+
+.title-edit
+{
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-review
+{
+  margin: 1rem;
+  border-radius: 15px;
+  background-color: var(--footer-background-color);
+  color: white;
+  cursor: pointer;
+  padding: 1rem 1rem 1rem 1rem;
+  text-decoration: none;
+  border: 0;
+}
+
+.edit-review-btn
+{
+  margin: 1rem;
+  border-radius: 15px;
+  background-color: var(--footer-background-color);
+  color: white;
+  cursor: pointer;
+  padding: 1rem 1rem 1rem 1rem;
+  text-decoration: none;
+  border: 0;
+}
+
+.review-actions
+{
+  margin-top: 1rem;
+  display: flex;
+}
+
+.edit-delete-buttons-flex
+{
+  display: flex;
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+
+.ind-review-new
+{
+  gap: 0.5rem;
+}

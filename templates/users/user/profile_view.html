@@ -1,0 +1,18 @@
+{% extends "tripobeatApp/base.html" %}
+{% load static %}
+
+<title>Profile Page</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+{% block content-text-block %}
+    <div class = "single-profile-div">
+    <div>
+    <h2> Profile Page for {{ user.username }} </h2>
+    </div>
+         {{ user.username }}
+    {{ user.first_name }}
+        {{ user.last_name }}
+        {{ user.email }}
+        {{ user.gender }}
+    </div>
+{% endblock %}
